@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ophie's Weather App</title>
+    <link rel="stylesheet" href="style/design.css" />
+    <link rel="stylesheet" href="bootstrap/bootstrap.css" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
+      crossorigin="anonymous"
+    />
+
+    <script
+      src="https://kit.fontawesome.com/ab7f9cf0d0.js"
+      crossorigin="anonymous"
+    ></script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Oxygen:wght@300;400;700&family=Rampart+One&display=swap"
+      rel="stylesheet"
+    />
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+  </head>
+  <body>
+    <div class="card border-0">
+      <form>
+        <div class="citySearchContainer">
+          <input
+            type="search"
+            name="citySearch"
+            id="citySearch"
+            autofocus="on"
+            placeholder="City"
+          />
+          <button class="search">Search</button>
+          <button class="pin">📍</button>
+        </div>
+        <div class="container">
+          <div class="row">
+            <div class="col-6 city-date-details">
+              <span class="city-typed"> TORONTO, CA </span><br /><span
+                class="date-and-time"
+              >
+                Friday October 22, 24:00:00 EST</span
+              >
+            </div>
+            <div class="col-6 mainweatherpic">
+              <img src="bootstrap/images/SunBehindCloudRain.png" />
+            </div>
+            <div class="col-6">
+              <span class="currentTemp">--°C </span>
+              <br />
+              <span class="currentTempDscrpt"
+                >Sun with clouds and showers
+              </span>
+            </div>
+            <div class="col-6 humidityWind">
+              <span class="humidity"> Humidity:60%</span>
+              <br />
+              <span class="wind"> Wind speed: 0 mph </span>
+            </div>
+            <div class="col-12 CF">
+              <button class="celsius">°C</button>
+              <span class="divider"> | </span>
+              <button class="fahrenheit">°F</button>
+            </div>
+            <hr class="lineseperator" />
+
+            <div class="weekWeather">
+              <div class="row row cols-5 days">
+                <div class="col">Saturday</div>
+                <div class="col">Sunday</div>
+                <div class="col">Monday</div>
+                <div class="col">Tuesday</div>
+                <div class="col">Wednesday</div>
+              </div>
+              <div class="row row cols-5 date">
+                <div class="col">Oct 23</div>
+                <div class="col">Oct 24</div>
+                <div class="col">Oct 25</div>
+                <div class="col">Oct 26</div>
+                <div class="col">Oct 27</div>
+              </div>
+              <div class="row row cols-5 weatherPics">
+                <div class="col">
+                  <img src="bootstrap/images/SunBehindCloudRain.png" />
+                </div>
+                <div class="col">
+                  <img src="bootstrap/images/Cloud.png" />
+                </div>
+                <div class="col">
+                  <img src="bootstrap/images/SimpleCloud.png" />
+                </div>
+                <div class="col">
+                  <img src="bootstrap/images/SunBehindCloud2.png" />
+                </div>
+                <div class="col">
+                  <img src="bootstrap/images/SunBehindCloud2.png" />
+                </div>
+              </div>
+              <div class="row row cols-5 highLowTemp">
+                <div class="col">Low: 20°C <br />High:25°C</div>
+                <div class="col">
+                  Low: 17°C<br />
+                  High:25°C
+                </div>
+                <div class="col">Low: 13°C <br />High:19°C</div>
+                <div class="col">Low: 17°C <br />High:25°C</div>
+                <div class="col">Low: 15°C <br />High:20°C</div>
+              </div>
+              <div class="row">
+                <div class="col-12 poweredBy">
+                  Powered by https://openweathermap.org/
+                </div>
+                <div class="col-12 createdBy">
+                  Created by Vanessa Bano | Open Source Code
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+    <script src="src/weatherapp.js"></script>
+  </body>
+</html>

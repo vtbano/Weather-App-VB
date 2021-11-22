@@ -1,0 +1,92 @@
+.city-date-details {
+  font-size: 18px;
+  color: whitesmoke;
+}
+
+.currentTemp {
+  font-size: 70px;
+  color: whitesmoke;
+  line-height: 70px;
+}
+
+.currentTempDscrpt {
+  font-size: 15px;
+  color: whitesmoke;
+  text-transform: capitalize;
+}
+
+.humidityWind {
+  color: whitesmoke;
+}
+
+.CF {
+  padding: 20px;
+}
+
+.celsius {
+  color: blue;
+  border: none;
+  background: none;
+  transition: all 200ms ease-in-out;
+}
+
+.celsius:hover {
+  background: rgb(179, 229, 245, 0.3);
+  cursor: pointer;
+}
+
+.divider {
+  color: blue;
+}
+.fahrenheit {
+  color: blue;
+  border: none;
+  transition: all 200ms ease-in-out;
+  background: none;
+}
+
+.fahrenheit:hover {
+  background: rgb(179, 229, 245, 0.3);
+  cursor: pointer;
+}
+
+hr.lineseperator {
+  opacity: 1;
+  width: 50%;
+  display: block;
+  margin: 20px auto;
+  border-top: 5px solid white;
+}
+
+.days {
+  color: rgba(255, 255, 255, 0.753);
+  font-size: 20px;
+  text-align: center;
+}
+
+.date {
+  color: rgba(255, 255, 255, 0.753);
+  font-size: 17px;
+  font-weight: bolder;
+  text-align: center;
+}
+
+.weatherPics {
+  text-align: center;
+}
+
+.highLowTemp {
+  color: rgba(255, 255, 255, 0.753);
+  font-size: 15px;
+  text-align: center;
+}
+.poweredBy {
+  color: whitesmoke;
+  text-align: center;
+  padding-top: 30px;
+}
+.createdBy {
+  color: rgb(240, 158, 6);
+  text-align: center;
+  padding-bottom: 10px;
+}
