@@ -52,18 +52,14 @@ function searchInput(event) {
 }
 
 function showTemperature(response) {
-  let mainTemp = Math.round(response.data.main.temp);
   let currentTemp = document.querySelector(".currentTemp");
-  currentTemp.innerHTML = `${mainTemp}°C`;
-  let mainWeatherDescript = response.data.weather[0].description;
   let weatherdescription = document.querySelector(".currentTempDscrpt");
-  weatherdescription.innerHTML = mainWeatherDescript;
-  let currenthumidity = Math.round(response.data.main.humidity);
-  let humiditydescription = document.querySelector(".humidity");
-  humiditydescription.innerHTML = `Humidity: ${currenthumidity}%`;
-  let currentwind = Math.round(response.data.wind.speed);
-  let windDescription = document.querySelector(".wind");
-  windDescription.innerHTML = `Wind Speed: ${currentwind} mph`;
+  let humiditydescription = document.querySelector("#humidityApiResult");
+  let windDescription = document.querySelector("#windApiResult");
+  currentTemp.innerHTML = Math.round(response.data.main.temp);
+  weatherdescription.innerHTML = response.data.weather[0].description;
+  humiditydescription.innerHTML = Math.round(response.data.main.humidity);
+  windDescription.innerHTML = Math.round(response.data.wind.speed);
 }
 
 let button = document.querySelector(".search");
