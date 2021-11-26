@@ -6,6 +6,9 @@ let dateDetails = document.querySelector(".date-and-time");
 let date = now.getDate();
 let hours = now.getHours();
 let minutes = now.getMinutes();
+if (minutes < 10) {
+  minutes = `0${minutes}`;
+}
 let year = now.getFullYear();
 
 let days = [
