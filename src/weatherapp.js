@@ -56,13 +56,21 @@ function searchInput(event) {
 
 function showTemperature(response) {
   let currentTemp = document.querySelector(".currentTemp");
-  let weatherdescription = document.querySelector(".currentTempDscrpt");
-  let humiditydescription = document.querySelector("#humidityApiResult");
-  let windDescription = document.querySelector("#windApiResult");
+  let weatherDescription = document.querySelector(".currentTempDscrpt");
+  let weatherIconElement = document.querySelector("#weatherIcon");
+  let humidityDescription = document.querySelector(".humidity");
+  let currentHumidity = Math.round(response.data.main.humidity);
+  let windDescription = document.querySelector(".wind");
+  let currentWind = Math.round(response.data.wind.speed);
   currentTemp.innerHTML = Math.round(response.data.main.temp);
-  weatherdescription.innerHTML = response.data.weather[0].description;
-  humiditydescription.innerHTML = Math.round(response.data.main.humidity);
-  windDescription.innerHTML = Math.round(response.data.wind.speed);
+  weatherDescription.innerHTML = response.data.weather[0].description;
+  weatherIconElement.setAttribute(
+    "src",
+    `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
+  );
+  weatherIconElement.setAttribute("alt", response.data.weather[0].description);
+  humidityDescription.innerHTML = `Humidity: ${currentHumidity}%`;
+  windDescription.innerHTML = `Wind: ${currentWind} mph`;
 }
 
 let button = document.querySelector(".search");
@@ -80,13 +88,19 @@ function pinCurrentPosition(position) {
 function showPinTemperature(response) {
   let currentTemp = document.querySelector(".currentTemp");
   let weatherdescription = document.querySelector(".currentTempDscrpt");
-  currentTemp.innerHTML = Math.round(response.data.main.temp);
-  weatherdescription.innerHTML = response.data.weather[0].description;
+  let weatherIconElement = document.querySelector("#weatherIcon");
   let currenthumidity = Math.round(response.data.main.humidity);
   let humiditydescription = document.querySelector(".humidity");
-  humiditydescription.innerHTML = `Humidity: ${currenthumidity}%`;
   let currentwind = Math.round(response.data.wind.speed);
   let windDescription = document.querySelector(".wind");
+  currentTemp.innerHTML = Math.round(response.data.main.temp);
+  weatherdescription.innerHTML = response.data.weather[0].description;
+  weatherIconElement.setAttribute(
+    "src",
+    `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
+  );
+  weatherIconElement.setAttribute("alt", response.data.weather[0].description);
+  humiditydescription.innerHTML = `Humidity: ${currenthumidity}%`;
   windDescription.innerHTML = `Wind Speed: ${currentwind} mph`;
 }
 let pin = document.querySelector(".pin");
