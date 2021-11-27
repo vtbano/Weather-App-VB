@@ -78,12 +78,10 @@ function pinCurrentPosition(position) {
 }
 
 function showPinTemperature(response) {
-  let mainTemp = Math.round(response.data.main.temp);
   let currentTemp = document.querySelector(".currentTemp");
-  currentTemp.innerHTML = `${mainTemp}°C`;
-  let mainWeatherDescript = response.data.weather[0].description;
   let weatherdescription = document.querySelector(".currentTempDscrpt");
-  weatherdescription.innerHTML = mainWeatherDescript;
+  currentTemp.innerHTML = Math.round(response.data.main.temp);
+  weatherdescription.innerHTML = response.data.weather[0].description;
   let currenthumidity = Math.round(response.data.main.humidity);
   let humiditydescription = document.querySelector(".humidity");
   humiditydescription.innerHTML = `Humidity: ${currenthumidity}%`;

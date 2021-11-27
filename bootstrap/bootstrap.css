@@ -9,6 +9,12 @@
   line-height: 70px;
 }
 
+.currentTempSymbol {
+  font-size: 70px;
+  color: whitesmoke;
+  line-height: 70px;
+}
+
 .currentTempDscrpt {
   font-size: 15px;
   color: whitesmoke;
