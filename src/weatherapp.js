@@ -1,4 +1,5 @@
-//Feature#1
+//Feature: Date & Time Details
+
 let now = new Date();
 
 let dateDetails = document.querySelector(".date-and-time");
@@ -41,6 +42,33 @@ let month = months[now.getMonth()];
 
 dateDetails.innerHTML = `${day} ${month} ${date}, ${hours}:${minutes} EST`;
 
+//Feature: Unit Conversion
+
+function showFarenheitTemp(event) {
+  event.preventDefault();
+  let currentTemp = document.querySelector(".currentTemp");
+  let farenheitTemp = (celsiusTemperature * 9) / 5 + 32;
+  currentTemp.innerHTML = `${Math.round(farenheitTemp)}°F`;
+  celsiusButton.classList.remove("active");
+  farenheitButton.classList.add("active");
+}
+
+function showCelsiusTemp(event) {
+  event.preventDefault();
+  let currentTemp = document.querySelector(".currentTemp");
+  currentTemp.innerHTML = `${Math.round(celsiusTemperature)}°C`;
+  celsiusButton.classList.add("active");
+  farenheitButton.classList.remove("active");
+}
+
+let farenheitButton = document.querySelector("#fahrenheitButton");
+farenheitButton.addEventListener("click", showFarenheitTemp);
+
+let celsiusButton = document.querySelector("#celsiusButton");
+celsiusButton.addEventListener("click", showCelsiusTemp);
+
+let celsiusTemperature = null;
+
 //Feature#2
 function searchInput(event) {
   event.preventDefault();
@@ -62,7 +90,8 @@ function showTemperature(response) {
   let currentHumidity = Math.round(response.data.main.humidity);
   let windDescription = document.querySelector(".wind");
   let currentWind = Math.round(response.data.wind.speed);
-  currentTemp.innerHTML = Math.round(response.data.main.temp);
+  celsiusTemperature = Math.round(response.data.main.temp);
+  currentTemp.innerHTML = `${Math.round(response.data.main.temp)}°C`;
   weatherDescription.innerHTML = response.data.weather[0].description;
   weatherIconElement.setAttribute(
     "src",
@@ -86,6 +115,7 @@ function pinCurrentPosition(position) {
 }
 
 function showPinTemperature(response) {
+  let pinCity = document.querySelector(".city-typed");
   let currentTemp = document.querySelector(".currentTemp");
   let weatherdescription = document.querySelector(".currentTempDscrpt");
   let weatherIconElement = document.querySelector("#weatherIcon");
@@ -93,7 +123,8 @@ function showPinTemperature(response) {
   let humiditydescription = document.querySelector(".humidity");
   let currentwind = Math.round(response.data.wind.speed);
   let windDescription = document.querySelector(".wind");
-  currentTemp.innerHTML = Math.round(response.data.main.temp);
+  pinCity.innerHTML = response.data.name;
+  currentTemp.innerHTML = `${Math.round(response.data.main.temp)}°C `;
   weatherdescription.innerHTML = response.data.weather[0].description;
   weatherIconElement.setAttribute(
     "src",

@@ -27,18 +27,33 @@
 
 .CF {
   padding: 20px;
+  text-decoration: none;
+}
+
+.CF .active {
+  color: white;
+  cursor: default;
+  text-decoration: none;
+}
+
+.CF .active:hover {
+  text-decoration: none;
 }
 
 .celsius {
   color: blue;
   border: none;
   background: none;
+  text-decoration: none;
   transition: all 200ms ease-in-out;
+}
+#celsiusButton {
+  text-decoration: none;
 }
 
 .celsius:hover {
   background: rgb(179, 229, 245, 0.3);
-  cursor: pointer;
+  cursor: default;
 }
 
 .divider {
@@ -47,13 +62,19 @@
 .fahrenheit {
   color: blue;
   border: none;
-  transition: all 200ms ease-in-out;
   background: none;
+  text-decoration: none;
+  transition: all 200ms ease-in-out;
+}
+
+#fahrenheitButton {
+  text-decoration: none;
 }
 
 .fahrenheit:hover {
   background: rgb(179, 229, 245, 0.3);
   cursor: pointer;
+  text-decoration: underline;
 }
 
 hr.lineseperator {
