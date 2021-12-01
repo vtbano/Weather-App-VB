@@ -69,7 +69,7 @@ celsiusButton.addEventListener("click", showCelsiusTemp);
 
 let celsiusTemperature = null;
 
-//Feature#2
+//Feature: Search Bar
 function searchInput(event) {
   event.preventDefault();
   let cityInput = document.querySelector("#citySearch");
@@ -100,12 +100,51 @@ function showTemperature(response) {
   weatherIconElement.setAttribute("alt", response.data.weather[0].description);
   humidityDescription.innerHTML = `Humidity: ${currentHumidity}%`;
   windDescription.innerHTML = `Wind: ${currentWind} mph`;
+
+  getForecast(response.data.coord);
 }
 
 let button = document.querySelector(".search");
 button.addEventListener("click", searchInput);
 
-//Feature #3
+//Feature: Weekly Forecast
+
+function displayForecast(response) {
+  console.log(response.data);
+  let forecastElement = document.querySelector("#weatherForecast");
+
+  let forecastHTML = `<div class="row">`;
+  let days = ["Sat", "Sun", "Mon"];
+  days.forEach(function (day) {
+    forecastHTML =
+      forecastHTML +
+      `
+<div class="col-2">
+<div class="day">${day}</div>
+<div class="date">Oct 23</div>
+
+<img src="bootstrap/images/SunBehindCloudRain.png" id="weatherPics" />
+<div class="lowTemp">Low: 20°C</div>
+<div class="highTemp">High: 15°C</div>
+</div>
+`;
+  });
+
+  forecastHTML = forecastHTML + `</div>`;
+  forecastElement.innerHTML = forecastHTML;
+}
+
+function getForecast(coordinates) {
+  console.log(coordinates);
+  let apiKey = "0ecc16a08b2cbf15e6cb6ef5e3476181";
+  let lon = coordinates.lon;
+  let lat = coordinates.lat;
+  let apiURL = `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&appid=${apiKey}&units=metric`;
+  console.log(apiURL);
+  axios.get(apiURL).then(displayForecast);
+}
+
+//Feature: Pin for current weather
 function pinCurrentPosition(position) {
   let lat = position.coords.latitude;
   let lon = position.coords.longitude;

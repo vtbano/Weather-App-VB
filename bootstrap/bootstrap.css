@@ -74,7 +74,6 @@
 .fahrenheit:hover {
   background: rgb(179, 229, 245, 0.3);
   cursor: pointer;
-  text-decoration: underline;
 }
 
 hr.lineseperator {
@@ -85,7 +84,7 @@ hr.lineseperator {
   border-top: 5px solid white;
 }
 
-.days {
+.day {
   color: rgba(255, 255, 255, 0.753);
   font-size: 20px;
   text-align: center;
@@ -102,11 +101,18 @@ hr.lineseperator {
   text-align: center;
 }
 
-.highLowTemp {
+.lowTemp {
   color: rgba(255, 255, 255, 0.753);
   font-size: 15px;
   text-align: center;
 }
+
+.highTemp {
+  color: rgba(255, 255, 255, 0.753);
+  font-size: 15px;
+  text-align: center;
+}
+
 .poweredBy {
   color: whitesmoke;
   text-align: center;
