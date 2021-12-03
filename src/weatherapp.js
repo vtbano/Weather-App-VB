@@ -109,25 +109,60 @@ button.addEventListener("click", searchInput);
 
 //Feature: Weekly Forecast
 
+function formatForecastDay(timestamp) {
+  let date = new Date(timestamp * 1000);
+  let day = date.getDay();
+  let days = ["Sun", "Mon", "Tue", "Wed", "Thur", "Fri", "Sat"];
+  return days[day];
+}
+
+function formatForecastDate(datestamp) {
+  let date = new Date(datestamp * 1000);
+  let dateNumber = date.getDate();
+
+  let months = [
+    "Jan",
+    "Feb",
+    "Mar",
+    "Apr",
+    "May",
+    "Jun",
+    "Jul",
+    "Aug",
+    "Sept",
+    "Oct",
+    "Nov",
+    "Dec",
+  ];
+
+  let month = months[date.getMonth()];
+
+  return `${month} ${dateNumber}`;
+}
+
 function displayForecast(response) {
-  console.log(response.data);
+  let forecast = response.data.daily;
+
   let forecastElement = document.querySelector("#weatherForecast");
 
   let forecastHTML = `<div class="row">`;
-  let days = ["Sat", "Sun", "Mon"];
-  days.forEach(function (day) {
-    forecastHTML =
-      forecastHTML +
-      `
+  forecast.forEach(function (forecastDay, index) {
+    if (index < 6) {
+      forecastHTML =
+        forecastHTML +
+        `
 <div class="col-2">
-<div class="day">${day}</div>
-<div class="date">Oct 23</div>
+<div class="day">${formatForecastDay(forecastDay.dt)}</div>
+<div class="date">${formatForecastDate(forecastDay.dt)}</div>
 
-<img src="bootstrap/images/SunBehindCloudRain.png" id="weatherPics" />
-<div class="lowTemp">Low: 20°C</div>
-<div class="highTemp">High: 15°C</div>
+<img src="http://openweathermap.org/img/wn/${
+          forecastDay.weather[0].icon
+        }@2x.png" />
+<div class="lowTemp">Low: ${Math.round(forecastDay.temp.min)}C</div>
+<div class="highTemp">High: ${Math.round(forecastDay.temp.max)}°C</div>
 </div>
 `;
+    }
   });
 
   forecastHTML = forecastHTML + `</div>`;
