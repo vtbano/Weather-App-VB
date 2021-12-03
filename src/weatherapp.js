@@ -185,7 +185,15 @@ function pinCurrentPosition(position) {
   let lon = position.coords.longitude;
   let apiKey = "0ecc16a08b2cbf15e6cb6ef5e3476181";
   let apiPinUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${apiKey}&units=metric`;
-  axios.get(apiPinUrl).then(showPinTemperature);
+  axios.get(apiPinUrl).then((weatherData) => {
+    showPinTemperature(weatherData);
+  });
+
+  let coordinates = {
+    lat: position.coords.latitude,
+    lon: position.coords.longitude,
+  };
+  getForecast(coordinates);
 }
 
 function showPinTemperature(response) {
