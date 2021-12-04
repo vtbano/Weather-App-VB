@@ -170,12 +170,10 @@ function displayForecast(response) {
 }
 
 function getForecast(coordinates) {
-  console.log(coordinates);
   let apiKey = "0ecc16a08b2cbf15e6cb6ef5e3476181";
   let lon = coordinates.lon;
   let lat = coordinates.lat;
   let apiURL = `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&appid=${apiKey}&units=metric`;
-  console.log(apiURL);
   axios.get(apiURL).then(displayForecast);
 }
 
@@ -199,22 +197,22 @@ function pinCurrentPosition(position) {
 function showPinTemperature(response) {
   let pinCity = document.querySelector(".city-typed");
   let currentTemp = document.querySelector(".currentTemp");
-  let weatherdescription = document.querySelector(".currentTempDscrpt");
+  let weatherDescription = document.querySelector(".currentTempDscrpt");
   let weatherIconElement = document.querySelector("#weatherIcon");
-  let currenthumidity = Math.round(response.data.main.humidity);
-  let humiditydescription = document.querySelector(".humidity");
-  let currentwind = Math.round(response.data.wind.speed);
+  let currentHumidity = Math.round(response.data.main.humidity);
+  let humidityDescription = document.querySelector(".humidity");
+  let currentWind = Math.round(response.data.wind.speed);
   let windDescription = document.querySelector(".wind");
   pinCity.innerHTML = response.data.name;
   currentTemp.innerHTML = `${Math.round(response.data.main.temp)}°C `;
-  weatherdescription.innerHTML = response.data.weather[0].description;
+  weatherDescription.innerHTML = response.data.weather[0].description;
   weatherIconElement.setAttribute(
     "src",
     `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
   );
   weatherIconElement.setAttribute("alt", response.data.weather[0].description);
-  humiditydescription.innerHTML = `Humidity: ${currenthumidity}%`;
-  windDescription.innerHTML = `Wind Speed: ${currentwind} mph`;
+  humidityDescription.innerHTML = `Humidity: ${currentHumidity}%`;
+  windDescription.innerHTML = `Wind Speed: ${currentWind} mph`;
 }
 let pin = document.querySelector(".pin");
 pin.addEventListener("click", pinCurrentPosition);
