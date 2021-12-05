@@ -91,6 +91,8 @@ function showTemperature(response) {
   let windDescription = document.querySelector(".wind");
   let currentWind = Math.round(response.data.wind.speed);
   celsiusTemperature = Math.round(response.data.main.temp);
+  celsiusButton.classList.add("active");
+  farenheitButton.classList.remove("active");
   currentTemp.innerHTML = `${Math.round(response.data.main.temp)}°C`;
   weatherDescription.innerHTML = response.data.weather[0].description;
   weatherIconElement.setAttribute(
